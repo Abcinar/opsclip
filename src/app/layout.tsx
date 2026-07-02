@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ClipAI — AI Video Clipping in Your Language",
+  title: "Lumina Clip — AI Video Clipping in Your Language",
   description: "Turn long videos into viral clips in Arabic, Hindi, Indonesian & Turkish. Native-quality AI, credits that never expire.",
-  keywords: "ai video clipping, arabic subtitles, hindi video, indonesian clips, turkish video ai",
+  keywords: "ai video clipping, arabic subtitles, hindi video, indonesian clips, turkish video ai, lumina clip",
   openGraph: {
-    title: "ClipAI — AI Video Clipping in Your Language",
+    title: "Lumina Clip — AI Video Clipping in Your Language",
     description: "Native-quality AI clipping for Arabic, Hindi, Indonesian & Turkish",
     type: "website",
   },

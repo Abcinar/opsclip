@@ -20,9 +20,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="px-5 py-4 border-b border-white/10">
           <Link href="/" className="flex items-center gap-2">
             <div className="w-8 h-8 bg-teal rounded-lg flex items-center justify-center">
-              <span className="text-white font-black text-sm">C</span>
+              <span className="text-gold font-black text-xs tracking-tight">LC</span>
             </div>
-            <span className="text-white font-bold text-lg">ClipAI</span>
+            <div className="flex flex-col leading-none"><span className="text-white font-black text-sm">Lumina</span><span className="text-gold font-semibold text-xs tracking-widest">CLIP</span></div>
           </Link>
         </div>
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">

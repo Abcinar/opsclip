@@ -9,9 +9,9 @@ export default function SignupPage() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2 mb-6">
             <div className="w-10 h-10 bg-teal rounded-xl flex items-center justify-center">
-              <span className="text-white font-black">C</span>
+              <span className="text-gold font-black text-xs">LC</span>
             </div>
-            <span className="text-white font-bold text-xl">ClipAI</span>
+            <div><span className="text-white font-black">Lumina</span><span className="text-gold font-black"> Clip</span></div>
           </Link>
           <h1 className="text-2xl font-black text-white">Start free today</h1>
           <p className="text-white/60 mt-1 text-sm">No credit card required</p>

@@ -7,11 +7,14 @@ export default function Footer({ t }: { t: Translations }) {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-7 h-7 bg-teal rounded-lg flex items-center justify-center">
-                <span className="text-white font-black text-xs">C</span>
+            <div className="flex items-center gap-2.5 mb-2">
+              <div className="w-9 h-9 bg-gradient-to-br from-teal to-navy-mid rounded-xl flex items-center justify-center">
+                <span className="text-gold font-black text-sm tracking-tight">LC</span>
               </div>
-              <span className="text-white font-bold">ClipAI</span>
+              <div className="flex flex-col leading-none">
+                <span className="text-white font-black text-base">Lumina</span>
+                <span className="text-gold font-semibold text-xs tracking-widest uppercase">Clip</span>
+              </div>
             </div>
             <p className="text-white/40 text-sm">{t.footer.tagline}</p>
           </div>

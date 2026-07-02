@@ -107,7 +107,7 @@ const en: Translations = {
   footer: {
     tagline: "AI clipping for the rest of the world.",
     links: ["Privacy Policy", "Terms of Service", "Contact", "Blog"],
-    copy: "© 2026 ClipAI. All rights reserved.",
+    copy: "© 2026 Lumina Clip. All rights reserved. All rights reserved.",
   },
 };
 
@@ -195,7 +195,7 @@ const tr: Translations = {
   footer: {
     tagline: "Dünyanın geri kalanı için AI klipleme.",
     links: ["Gizlilik Politikası", "Kullanım Koşulları", "İletişim", "Blog"],
-    copy: "© 2026 ClipAI. Tüm hakları saklıdır.",
+    copy: "© 2026 Lumina Clip. All rights reserved. Tüm hakları saklıdır.",
   },
 };
 
