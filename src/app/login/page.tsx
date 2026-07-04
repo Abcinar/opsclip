@@ -1,11 +1,32 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Mail, Lock, ArrowRight } from "lucide-react";
+import { loginUser, saveToken } from "@/lib/api";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
-  const [pass,  setPass]  = useState("");
+  const [pass, setPass] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+    try {
+      const data = await loginUser(email, pass);
+      saveToken(data.access_token);
+      router.push("/dashboard");
+    } catch (err: any) {
+      setError(err.message || "Giriş başarısız");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="min-h-screen hero-gradient flex items-center justify-center px-4">
       <div className="w-full max-w-md">
@@ -19,7 +40,12 @@ export default function LoginPage() {
           <h1 className="text-2xl font-black text-white">Welcome back</h1>
           <p className="text-white/60 mt-1 text-sm">Sign in to your account</p>
         </div>
-        <div className="card p-7 space-y-4">
+        <form onSubmit={handleSubmit} className="card p-7 space-y-4">
+          {error && (
+            <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-3 py-2">
+              {error}
+            </div>
+          )}
           <div>
             <label className="block text-xs font-semibold text-gray-text mb-1.5">Email</label>
             <div className="relative">
@@ -27,7 +53,7 @@ export default function LoginPage() {
               <input type="email" value={email} onChange={e => setEmail(e.target.value)}
                 placeholder="you@example.com"
                 className="w-full pl-9 pr-4 py-3 border border-gray-line rounded-xl text-sm
-                  focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal" />
+                focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal" />
             </div>
           </div>
           <div>
@@ -37,29 +63,18 @@ export default function LoginPage() {
               <input type="password" value={pass} onChange={e => setPass(e.target.value)}
                 placeholder="••••••••"
                 className="w-full pl-9 pr-4 py-3 border border-gray-line rounded-xl text-sm
-                  focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal" />
+                focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal" />
             </div>
           </div>
-          <Link href="/dashboard" className="btn-primary w-full flex items-center justify-center gap-2 py-3">
-            Sign In <ArrowRight size={16} />
-          </Link>
-          <div className="relative my-2">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-line" />
-            </div>
-            <div className="relative flex justify-center">
-              <span className="bg-white px-3 text-xs text-gray-mid">or continue with</span>
-            </div>
-          </div>
-          <button className="w-full flex items-center justify-center gap-3 py-3 border border-gray-line
-            rounded-xl text-sm font-medium text-gray-text hover:bg-gray-light transition-colors">
-            <span className="text-lg">G</span> Continue with Google
+          <button type="submit" disabled={loading}
+            className="btn-primary w-full flex items-center justify-center gap-2 py-3 disabled:opacity-60">
+            {loading ? "Signing in..." : "Sign In"} <ArrowRight size={16} />
           </button>
           <p className="text-center text-sm text-gray-mid">
             No account?{" "}
             <Link href="/signup" className="text-teal font-semibold hover:underline">Sign up free</Link>
           </p>
-        </div>
+        </form>
       </div>
     </div>
   );
