@@ -43,3 +43,25 @@ body {
   transition: transform 0.2s;
 }
 .nav-link:hover::after { transform: scaleX(1); }
+.card {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 40px rgba(11, 31, 58, 0.15);
+}
+
+.btn-primary {
+  background: var(--color-teal);
+  color: #ffffff;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--color-teal-dark); }
+
+.btn-gold {
+  background: var(--color-gold);
+  color: var(--color-navy);
+  border-radius: 0.75rem;
+  transition: background 0.2s;
+}
+.btn-gold:hover { background: var(--color-gold-dark); }
