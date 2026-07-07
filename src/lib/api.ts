@@ -42,3 +42,24 @@ export function getToken(): string | null {
 export function logout() {
   localStorage.removeItem("access_token");
 }
+export async function getClips() {
+  const token = getToken();
+  const res = await fetch(`${API_URL}/api/v1/clips/`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || "Klipler yüklenemedi");
+  }
+  return res.json(); // { clips: [...], total }
+}
+
+export async function getDownloadUrl(clipId: string) {
+  const token = getToken();
+  const res = await fetch(`${API_URL}/api/v1/clips/${clipId}/download`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error("İndirme linki alınamadı");
+  return res.json(); // { download_url, expires_in }
+}
